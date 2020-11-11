@@ -17,8 +17,9 @@
     ],
     "require": {
         "php": "^7.3",
-        "illuminate/support": "^6.0|^7.0|^8.0",
+        "illuminate/contracts": "^6.0|^7.0|^8.0",
         "illuminate/database": "^6.0|^7.0|^8.0",
+        "illuminate/support": "^6.0|^7.0|^8.0",
         "yandex-money/yandex-checkout-sdk-php": "^1.6"
     },
     "require-dev": {
@@ -38,7 +39,6 @@
     "scripts": {
         "test": "vendor/bin/phpunit",
         "test-coverage": "vendor/bin/phpunit --coverage-html coverage"
-
     },
     "config": {
         "sort-packages": true
