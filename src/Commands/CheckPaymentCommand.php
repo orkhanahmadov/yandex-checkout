@@ -46,6 +46,6 @@ class CheckPaymentCommand extends Command
         });
 
         $this->output->progressFinish();
-        $this->output->success('Checked all pending Yandex Checkouts');
+        $this->output->success('Finished checking all pending Yandex Checkouts');
     }
 }
