@@ -13,8 +13,8 @@ class CreateYandexCheckoutsTable extends Migration
     {
         Schema::create(config('yandex-checkout.table_name'), function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('payable_type')->nullable();
-            $table->unsignedBigInteger('payable_id')->nullable();
+            $table->string('payable_type');
+            $table->unsignedBigInteger('payable_id');
             $table->index(['payable_type', 'payable_id']);
             $table->string('payment_id')->index()->unique();
             $table->string('status')->index();
