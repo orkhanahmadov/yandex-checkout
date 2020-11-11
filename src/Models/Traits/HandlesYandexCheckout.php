@@ -5,8 +5,8 @@ namespace Orkhanahmadov\YandexCheckout\Models\Traits;
 use Illuminate\Container\Container;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\MorphMany;
-use Orkhanahmadov\YandexCheckout\Models\YandexCheckout as YandexCheckoutModel;
-use Orkhanahmadov\YandexCheckout\YandexCheckout;
+use Orkhanahmadov\YandexCheckout\Models\YandexCheckout;
+use Orkhanahmadov\YandexCheckout\YandexCheckoutService;
 use YandexCheckout\Request\Payments\CreatePaymentRequestInterface;
 
 /**
@@ -18,13 +18,13 @@ trait HandlesYandexCheckout
 {
     public function yandexCheckouts(): MorphMany
     {
-        return $this->morphMany(YandexCheckoutModel::class, 'payable');
+        return $this->morphMany(YandexCheckout::class, 'payable');
     }
 
     public function createPayment(CreatePaymentRequestInterface $paymentRequest): YandexCheckoutModel
     {
-        /** @var YandexCheckout $yandexCheckout */
-        $yandexCheckout = Container::getInstance()->make(YandexCheckout::class);
+        /** @var YandexCheckoutService $yandexCheckout */
+        $yandexCheckout = Container::getInstance()->make(YandexCheckoutService::class);
 
         return $yandexCheckout->createPayment($this, $paymentRequest);
     }

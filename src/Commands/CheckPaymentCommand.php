@@ -3,8 +3,8 @@
 namespace Orkhanahmadov\YandexCheckout\Commands;
 
 use Illuminate\Console\Command;
-use Orkhanahmadov\YandexCheckout\Models\YandexCheckout as YandexCheckoutModel;
-use Orkhanahmadov\YandexCheckout\YandexCheckout;
+use Orkhanahmadov\YandexCheckout\Models\YandexCheckout;
+use Orkhanahmadov\YandexCheckout\YandexCheckoutService;
 
 class CheckPaymentCommand extends Command
 {
@@ -25,19 +25,19 @@ class CheckPaymentCommand extends Command
     /**
      * Execute the console command.
      *
-     * @param YandexCheckout $yandexCheckout
+     * @param YandexCheckoutService $yandexCheckout
      */
-    public function handle(YandexCheckout $yandexCheckout): void
+    public function handle(YandexCheckoutService $yandexCheckout): void
     {
         if ($paymentKey = $this->argument('paymentId')) {
-            $payment = YandexCheckoutModel::where('payment_key', $paymentKey)->firstOrFail();
+            $payment = YandexCheckout::where('payment_key', $paymentKey)->firstOrFail();
 
             $yandexCheckout->paymentInfo($payment);
 
             return;
         }
 
-        foreach (YandexCheckoutModel::pending()->cursor() as $payment) {
+        foreach (YandexCheckout::pending()->cursor() as $payment) {
             $yandexCheckout->paymentInfo($payment);
         }
     }

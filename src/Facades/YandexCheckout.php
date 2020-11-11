@@ -5,7 +5,7 @@ namespace Orkhanahmadov\YandexCheckout\Facades;
 use Illuminate\Support\Facades\Facade;
 
 /**
- * @see \Orkhanahmadov\YandexCheckout\YandexCheckout
+ * @see \Orkhanahmadov\YandexCheckout\YandexCheckoutService
  */
 class YandexCheckout extends Facade
 {

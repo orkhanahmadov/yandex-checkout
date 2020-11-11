@@ -4,13 +4,11 @@ namespace Orkhanahmadov\YandexCheckout;
 
 use Illuminate\Contracts\Config\Repository;
 use Illuminate\Database\Eloquent\Model;
-use Orkhanahmadov\YandexCheckout\Models\YandexCheckout as YandexCheckoutModel;
+use Orkhanahmadov\YandexCheckout\Models\YandexCheckout;
 use YandexCheckout\Client;
-use YandexCheckout\Model\PaymentInterface;
 use YandexCheckout\Request\Payments\CreatePaymentRequestInterface;
-use YandexCheckout\Request\Payments\CreatePaymentResponse;
 
-class YandexCheckout
+class YandexCheckoutService
 {
     /**
      * @var Client
@@ -26,11 +24,11 @@ class YandexCheckout
         );
     }
 
-    public function createPayment(Model $model, CreatePaymentRequestInterface $paymentRequest): YandexCheckoutModel
+    public function createPayment(Model $model, CreatePaymentRequestInterface $paymentRequest): YandexCheckout
     {
         $paymentResponse = $this->client->createPayment($paymentRequest);
 
-        $yandexCheckoutModel = new YandexCheckoutModel();
+        $yandexCheckoutModel = new YandexCheckout();
         $yandexCheckoutModel->payable_type = get_class($model);
         $yandexCheckoutModel->payable_id = $model->getKey();
         $yandexCheckoutModel->payment_id = $paymentResponse->getId();
@@ -44,13 +42,13 @@ class YandexCheckout
     }
 
     /**
-     * @param YandexCheckoutModel|string $payment
-     * @return YandexCheckoutModel
+     * @param YandexCheckout|string $payment
+     * @return YandexCheckout
      */
-    public function paymentInfo($payment): YandexCheckoutModel
+    public function paymentInfo($payment): YandexCheckout
     {
-        if (! $payment instanceof YandexCheckoutModel) {
-            $payment = YandexCheckoutModel::where('payment_id', $payment)->firstOrFail();
+        if (! $payment instanceof YandexCheckout) {
+            $payment = YandexCheckout::where('payment_id', $payment)->firstOrFail();
         }
 
         $paymentResponse = $this->client->getPaymentInfo($payment->payment_id);
@@ -65,7 +63,7 @@ class YandexCheckout
         return $payment;
     }
 
-    private function dispatchEvent(string $name, YandexCheckoutModel $yandexCheckout): void
+    private function dispatchEvent(string $name, YandexCheckout $yandexCheckout): void
     {
         $event = config("yandex-checkout.events.{$name}");
 

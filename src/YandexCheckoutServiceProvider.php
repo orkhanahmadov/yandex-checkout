@@ -29,7 +29,7 @@ class YandexCheckoutServiceProvider extends ServiceProvider
         $this->mergeConfigFrom(__DIR__.'/../config/config.php', 'yandex-checkout');
 
         $this->app->singleton('yandex-checkout', function () {
-            return $this->app->make(YandexCheckout::class);
+            return $this->app->make(YandexCheckoutService::class);
         });
     }
 }
