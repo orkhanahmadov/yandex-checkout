@@ -1,4 +1,4 @@
-<img src="https://banners.beyondco.de/Yandex%20Checkout.png?theme=light&packageName=orkhanahmadov%2Fyandex-checkout&pattern=architect&style=style_1&description=YooKassa+%28formerly+Yandex+Checkout%29+integration+package+for+Laravel&md=1&showWatermark=0&fontSize=100px&images=credit-card&widths=auto&heights=auto" />
+<img src="https://banners.beyondco.de/Yandex%20Checkout.png?theme=light&packageName=orkhanahmadov%2Fyandex-checkout&pattern=architect&style=style_1&description=YooKassa+%28formerly+Yandex+Checkout%29+integration+package+for+Laravel&md=1&showWatermark=0&fontSize=100px&images=credit-card&widths=200&heights=200" />
 
 [![Latest Stable Version](https://poser.pugx.org/orkhanahmadov/yandex-checkout/v/stable)](https://packagist.org/packages/orkhanahmadov/yandex-checkout)
 [![Latest Unstable Version](https://poser.pugx.org/orkhanahmadov/yandex-checkout/v/unstable)](https://packagist.org/packages/orkhanahmadov/yandex-checkout)
