@@ -29,8 +29,8 @@ class CheckPaymentCommand extends Command
      */
     public function handle(YandexCheckoutService $yandexCheckout): void
     {
-        if ($paymentKey = $this->argument('paymentId')) {
-            $payment = YandexCheckout::where('payment_key', $paymentKey)->firstOrFail();
+        if ($paymentId = $this->argument('paymentId')) {
+            $payment = YandexCheckout::where('payment_id', $paymentId)->firstOrFail();
 
             $yandexCheckout->paymentInfo($payment);
 
