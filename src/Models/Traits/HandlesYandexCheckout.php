@@ -21,7 +21,7 @@ trait HandlesYandexCheckout
         return $this->morphMany(YandexCheckout::class, 'payable');
     }
 
-    public function createPayment(CreatePaymentRequestInterface $paymentRequest): YandexCheckoutModel
+    public function createPayment(CreatePaymentRequestInterface $paymentRequest): YandexCheckout
     {
         /** @var YandexCheckoutService $yandexCheckout */
         $yandexCheckout = Container::getInstance()->make(YandexCheckoutService::class);
