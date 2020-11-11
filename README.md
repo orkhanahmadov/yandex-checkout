@@ -119,21 +119,7 @@ Gets information on previously created payment. Accepts single argument:
 ``` php
 $product = Product::first();
 $yandexCheckout = app(YandexCheckoutService::class);
-$payment = $yandexCheckout->createPayment(
-    $product,
-    CreatePaymentRequest::builder()->build([
-        'amount' => [
-            'value' => 49.99,
-            'currency' => 'RUB',
-        ],
-        'confirmation' => [
-            'type' => 'redirect',
-            'return_url' => 'https://example.com',
-        ],
-        'capture' => true,
-        'description' => 'Payment for product: ' . $product->id,
-    ]
-);
+$payment = $yandexCheckout->createPayment($product, ...);
 
 $paymentInfo = $yandexCheckout->paymentInfo($payment);
 // or
@@ -188,20 +174,19 @@ By using `HandlesYandexCheckout` your model also gets access to payment related 
 ``` php
 $product = Product::first();
 
-$product->createPayment(
-    CreatePaymentRequest::builder()->build([
-        'amount' => [
-            'value' => 49.99,
-            'currency' => 'RUB',
-        ],
-        'confirmation' => [
-            'type' => 'redirect',
-            'return_url' => 'https://example.com',
-        ],
-        'capture' => true,
-        'description' => 'Payment for product: ' . $product->id,
-    ]
-);
+$paymentRequest = CreatePaymentRequest::builder()->build([
+    'amount' => [
+      'value' => 49.99,
+      'currency' => 'RUB',
+    ],
+    'confirmation' => [
+      'type' => 'redirect',
+      'return_url' => 'https://example.com',
+    ],
+    'capture' => true,
+    'description' => 'Payment for product: ' . $product->id,
+]);
+$product->createPayment($paymentRequest);
 ```
 
 #### `yandexCheckouts()`
