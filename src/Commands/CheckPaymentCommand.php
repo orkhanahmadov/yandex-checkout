@@ -34,6 +34,8 @@ class CheckPaymentCommand extends Command
 
             $yandexCheckoutService->paymentInfo($payment);
 
+            $this->output->success("Finished checking Yandex Checkout with payment ID: {$paymentId}");
+
             return;
         }
 
