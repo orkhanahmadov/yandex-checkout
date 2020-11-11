@@ -3,6 +3,7 @@
 namespace Orkhanahmadov\YandexCheckout;
 
 use Illuminate\Support\ServiceProvider;
+use Orkhanahmadov\YandexCheckout\Commands\CheckPaymentCommand;
 
 class YandexCheckoutServiceProvider extends ServiceProvider
 {
@@ -19,8 +20,7 @@ class YandexCheckoutServiceProvider extends ServiceProvider
                 ], 'migrations');
             }
 
-            // Registering package commands.
-            // $this->commands([]);
+             $this->commands([CheckPaymentCommand::class]);
         }
     }
 
