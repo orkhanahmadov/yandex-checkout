@@ -17,6 +17,7 @@ use Illuminate\Support\Arr;
  * @property bool $succeeded
  * @property bool $paid
  * @property string|null $confirmation_url
+ * @property string|null $cancellation_reason
  * @method static Builder succeeded()
  * @method static Builder pending()
  */
@@ -56,6 +57,11 @@ class YandexCheckout extends Model
     public function getConfirmationUrlAttribute(): ?string
     {
         return Arr::get($this->response, 'confirmation.confirmation_url');
+    }
+
+    public function getCancellationReasonAttribute(): ?string
+    {
+        return Arr::get($this->response, 'cancellation_details.reason');
     }
 
     public function scopeSucceeded(Builder $builder): Builder
