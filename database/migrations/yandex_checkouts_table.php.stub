@@ -1,0 +1,33 @@
+<?php
+
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Database\Migrations\Migration;
+use Illuminate\Support\Facades\Schema;
+
+class CreateYandexCheckoutsTable extends Migration
+{
+    /**
+     * Run the migrations.
+     */
+    public function up()
+    {
+        Schema::create(config('yandex-checkout.table_name'), function (Blueprint $table) {
+            $table->bigIncrements('id');
+            $table->string('payable_type')->nullable();
+            $table->unsignedBigInteger('payable_id')->nullable();
+            $table->index(['payable_type', 'payable_id']);
+            $table->string('payment_id')->index()->unique();
+            $table->string('status');
+            $table->json('response');
+            $table->timestamps();
+        });
+    }
+
+    /**
+     * Reverse the migrations.
+     */
+    public function down()
+    {
+        Schema::dropIfExists(config('yandex-checkout.table_name'));
+    }
+}
