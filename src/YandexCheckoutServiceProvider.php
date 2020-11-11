@@ -11,7 +11,7 @@ class YandexCheckoutServiceProvider extends ServiceProvider
     {
         if ($this->app->runningInConsole()) {
             $this->publishes([
-                __DIR__.'/../config/config.php' => config_path('yandex-checkout.php'),
+                __DIR__ . '/../config/config.php' => config_path('yandex-checkout.php'),
             ], 'config');
 
             if (! class_exists('CreateYandexCheckoutsTable')) {
@@ -20,13 +20,13 @@ class YandexCheckoutServiceProvider extends ServiceProvider
                 ], 'migrations');
             }
 
-             $this->commands([CheckPaymentCommand::class]);
+            $this->commands([CheckPaymentCommand::class]);
         }
     }
 
     public function register()
     {
-        $this->mergeConfigFrom(__DIR__.'/../config/config.php', 'yandex-checkout');
+        $this->mergeConfigFrom(__DIR__ . '/../config/config.php', 'yandex-checkout');
 
         $this->app->singleton('yandex-checkout', function () {
             return $this->app->make(YandexCheckoutService::class);
