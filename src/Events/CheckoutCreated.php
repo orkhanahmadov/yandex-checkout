@@ -2,4 +2,4 @@
 
 namespace Orkhanahmadov\YandexCheckout\Events;
 
-class CheckoutCreated extends Event {}
+class CheckoutCreated extends CheckoutEvent {}

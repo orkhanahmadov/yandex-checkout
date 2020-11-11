@@ -6,7 +6,7 @@ use Illuminate\Foundation\Events\Dispatchable;
 use Illuminate\Queue\SerializesModels;
 use Orkhanahmadov\YandexCheckout\Models\YandexCheckout;
 
-abstract class Event
+abstract class CheckoutEvent
 {
     use Dispatchable;
     use SerializesModels;
