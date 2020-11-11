@@ -1,4 +1,6 @@
-# YooKassa (formerly Yandex Checkout) integration for Laravel
+<img src="https://banners.beyondco.de/Yandex%20Checkout.png?theme=light&packageName=orkhanahmadov%2Fyandex-checkout&pattern=architect&style=style_1&description=YooKassa+%28formerly+Yandex+Checkout%29+integration+package+for+Laravel&md=1&showWatermark=0&fontSize=100px&images=credit-card&widths=auto&heights=auto" />
+<br />
+<br />
 
 [![Latest Stable Version](https://poser.pugx.org/orkhanahmadov/yandex-checkout/v/stable)](https://packagist.org/packages/orkhanahmadov/yandex-checkout)
 [![Latest Unstable Version](https://poser.pugx.org/orkhanahmadov/yandex-checkout/v/unstable)](https://packagist.org/packages/orkhanahmadov/yandex-checkout)
@@ -10,6 +12,8 @@
 [![Maintainability](https://api.codeclimate.com/v1/badges/c2a7ab12371ec106ba13/maintainability)](https://codeclimate.com/github/orkhanahmadov/yandex-checkout/maintainability)
 [![Quality Score](https://img.shields.io/scrutinizer/g/orkhanahmadov/yandex-checkout.svg)](https://scrutinizer-ci.com/g/orkhanahmadov/yandex-checkout)
 [![StyleCI](https://github.styleci.io/repos/311930802/shield?branch=master)](https://github.styleci.io/repos/311930802?branch=master)
+
+Easy and complete YooKassa (formerly Yandex Checkout) integration for Laravel
 
 ## Requirements
 
