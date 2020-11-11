@@ -1,6 +1,6 @@
 # Changelog
 
-All notable changes to `content-migrations` will be documented in this file
+All notable changes to `yandex-checkout` will be documented in this file
 
 ## 1.0.0 - 2020-11-11
 
