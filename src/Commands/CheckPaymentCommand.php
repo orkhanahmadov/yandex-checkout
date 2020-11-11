@@ -40,14 +40,15 @@ class CheckPaymentCommand extends Command
         }
 
         $pendingCheckouts = YandexCheckout::pending()->get();
-        $this->output->createProgressBar($pendingCheckouts->count());
+        $progressBar = $this->output->createProgressBar($pendingCheckouts->count());
+        $progressBar->start();
 
         foreach ($pendingCheckouts as $yandexCheckout) {
             $yandexCheckoutService->paymentInfo($yandexCheckout);
-            $this->output->progressAdvance();
+            $progressBar->advance();
         }
 
-        $this->output->progressFinish();
+        $progressBar->finish();
         $this->output->success('Finished checking all pending Yandex Checkouts');
     }
 }
