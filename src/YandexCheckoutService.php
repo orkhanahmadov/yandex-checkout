@@ -65,9 +65,7 @@ class YandexCheckoutService
 
     private function dispatchEvent(string $name, YandexCheckout $yandexCheckout): void
     {
-        $event = config("yandex-checkout.events.{$name}");
-
-        if ($event && config('yandex-checkout.events.enabled')) {
+        if ($event = config("yandex-checkout.events.{$name}")) {
             $event::dispatch($yandexCheckout);
         }
     }
