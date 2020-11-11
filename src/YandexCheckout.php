@@ -45,9 +45,9 @@ class YandexCheckout
 
     /**
      * @param YandexCheckoutModel|string $payment
-     * @return PaymentInterface
+     * @return YandexCheckoutModel
      */
-    public function paymentInfo($payment): PaymentInterface
+    public function paymentInfo($payment): YandexCheckoutModel
     {
         if (! $payment instanceof YandexCheckoutModel) {
             $payment = YandexCheckoutModel::where('payment_id', $payment)->firstOrFail();
@@ -62,7 +62,7 @@ class YandexCheckout
         $this->dispatchEvent('checked', $payment);
         $this->dispatchEvent($payment->status, $payment);
 
-        return $paymentResponse;
+        return $payment;
     }
 
     private function dispatchEvent(string $name, YandexCheckoutModel $yandexCheckout): void

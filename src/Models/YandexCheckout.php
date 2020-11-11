@@ -17,7 +17,8 @@ use Illuminate\Support\Arr;
  * @property bool $succeeded
  * @property bool $paid
  * @property string|null $confirmation_url
- * @method static Builder successful()
+ * @method static Builder succeeded()
+ * @method static Builder pending()
  */
 class YandexCheckout extends Model
 {

@@ -21,11 +21,6 @@ trait HandlesYandexCheckout
         return $this->morphMany(YandexCheckoutModel::class, 'payable');
     }
 
-    public function successfulYandexCheckouts(): MorphMany
-    {
-        return $this->morphMany(YandexCheckoutModel::class, 'payable')->succeeded();
-    }
-
     public function createPayment(CreatePaymentRequestInterface $paymentRequest): YandexCheckoutModel
     {
         /** @var YandexCheckout $yandexCheckout */
