@@ -25,20 +25,27 @@ class CheckPaymentCommand extends Command
     /**
      * Execute the console command.
      *
-     * @param YandexCheckoutService $yandexCheckout
+     * @param YandexCheckoutService $yandexCheckoutService
      */
-    public function handle(YandexCheckoutService $yandexCheckout): void
+    public function handle(YandexCheckoutService $yandexCheckoutService): void
     {
         if ($paymentId = $this->argument('paymentId')) {
             $payment = YandexCheckout::where('payment_id', $paymentId)->firstOrFail();
 
-            $yandexCheckout->paymentInfo($payment);
+            $yandexCheckoutService->paymentInfo($payment);
 
             return;
         }
 
-        foreach (YandexCheckout::pending()->cursor() as $payment) {
-            $yandexCheckout->paymentInfo($payment);
-        }
+        $pendingCheckouts = YandexCheckout::pending()->get();
+        $this->output->createProgressBar($pendingCheckouts->count());
+
+        $pendingCheckouts->each(function (YandexCheckout $yandexCheckout) use ($yandexCheckoutService) {
+            $yandexCheckoutService->paymentInfo($yandexCheckout);
+            $this->output->progressAdvance();
+        });
+
+        $this->output->progressFinish();
+        $this->output->success('Checked all pending Yandex Checkouts');
     }
 }
