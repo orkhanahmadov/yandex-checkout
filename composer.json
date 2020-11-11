@@ -1,9 +1,12 @@
 {
     "name": "orkhanahmadov/yandex-checkout",
-    "description": "Easy and complete Yandex Checkout integration for Laravel",
+    "description": "Easy and complete YooKassa (Yandex Checkout) integration for Laravel",
     "keywords": [
         "orkhanahmadov",
-        "yandex-checkout"
+        "yandex",
+        "yandex-checkout",
+        "yookassa",
+        "laravel-payment"
     ],
     "homepage": "https://github.com/orkhanahmadov/yandex-checkout",
     "license": "MIT",

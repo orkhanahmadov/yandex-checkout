@@ -1,6 +1,15 @@
-# Yandex Checkout integration for Laravel
+# YooKassa (formerly Yandex Checkout) integration for Laravel
 
-## WIP
+[![Latest Stable Version](https://poser.pugx.org/orkhanahmadov/yandex-checkout/v/stable)](https://packagist.org/packages/orkhanahmadov/yandex-checkout)
+[![Latest Unstable Version](https://poser.pugx.org/orkhanahmadov/yandex-checkout/v/unstable)](https://packagist.org/packages/orkhanahmadov/yandex-checkout)
+[![Total Downloads](https://img.shields.io/packagist/dt/orkhanahmadov/yandex-checkout)](https://packagist.org/packages/orkhanahmadov/yandex-checkout)
+[![GitHub license](https://img.shields.io/github/license/orkhanahmadov/yandex-checkout.svg)](https://github.com/orkhanahmadov/yandex-checkout/blob/master/LICENSE.md)
+
+[![Build Status](https://img.shields.io/travis/orkhanahmadov/yandex-checkout.svg)](https://travis-ci.org/orkhanahmadov/yandex-checkout)
+[![Test Coverage](https://api.codeclimate.com/v1/badges/c2a7ab12371ec106ba13/test_coverage)](https://codeclimate.com/github/orkhanahmadov/yandex-checkout/test_coverage)
+[![Maintainability](https://api.codeclimate.com/v1/badges/c2a7ab12371ec106ba13/maintainability)](https://codeclimate.com/github/orkhanahmadov/yandex-checkout/maintainability)
+[![Quality Score](https://img.shields.io/scrutinizer/g/orkhanahmadov/yandex-checkout.svg)](https://scrutinizer-ci.com/g/orkhanahmadov/yandex-checkout)
+[![StyleCI](https://github.styleci.io/repos/311930802/shield?branch=master)](https://github.styleci.io/repos/311930802?branch=master)
 
 ## Requirements
 
