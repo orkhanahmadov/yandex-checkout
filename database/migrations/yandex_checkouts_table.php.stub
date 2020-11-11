@@ -17,7 +17,7 @@ class CreateYandexCheckoutsTable extends Migration
             $table->unsignedBigInteger('payable_id')->nullable();
             $table->index(['payable_type', 'payable_id']);
             $table->string('payment_id')->index()->unique();
-            $table->string('status');
+            $table->string('status')->index();
             $table->json('response');
             $table->timestamps();
         });
