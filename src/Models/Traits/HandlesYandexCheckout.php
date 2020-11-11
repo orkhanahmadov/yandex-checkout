@@ -16,12 +16,12 @@ use YandexCheckout\Request\Payments\CreatePaymentRequestInterface;
  */
 trait HandlesYandexCheckout
 {
-    public function checkouts(): MorphMany
+    public function yandexCheckouts(): MorphMany
     {
         return $this->morphMany(YandexCheckoutModel::class, 'payable');
     }
 
-    public function successfulCheckouts(): MorphMany
+    public function successfulYandexCheckouts(): MorphMany
     {
         return $this->morphMany(YandexCheckoutModel::class, 'payable')->succeeded();
     }
