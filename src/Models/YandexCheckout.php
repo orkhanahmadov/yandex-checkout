@@ -14,6 +14,7 @@ use Illuminate\Support\Arr;
  * @property string $payment_id
  * @property string $status
  * @property array $response
+ * @property bool $succeeded
  * @property bool $paid
  * @property string|null $confirmation_url
  * @method static Builder successful()
@@ -29,23 +30,6 @@ class YandexCheckout extends Model
         'response' => 'array',
     ];
 
-    public static function booted()
-    {
-        if (config('yandex-checkout.events.enabled')) {
-            static::created(function (YandexCheckout $yandexCheckout) {
-                if ($event = config('yandex-checkout.events.created')) {
-                    $event::dispatch($yandexCheckout);
-                }
-            });
-
-            static::updated(function (YandexCheckout $yandexCheckout) {
-                if ($event = config("yandex-checkout.events.{$yandexCheckout->status}")) {
-                    $event::dispatch($yandexCheckout);
-                }
-            });
-        }
-    }
-
     public function __construct(array $attributes = [])
     {
         $this->setTable(config('yandex-checkout.table_name'));
@@ -58,6 +42,11 @@ class YandexCheckout extends Model
         return $this->morphTo();
     }
 
+    public function getSucceededAttribute(): bool
+    {
+        return $this->status === self::STATUS_SUCCEEDED;
+    }
+
     public function getPaidAttribute(): bool
     {
         return Arr::get($this->response, 'paid', false);
@@ -68,7 +57,7 @@ class YandexCheckout extends Model
         return Arr::get($this->response, 'confirmation.confirmation_url');
     }
 
-    public function scopeSuccessful(Builder $builder): Builder
+    public function scopeSucceeded(Builder $builder): Builder
     {
         return $builder->where('status', self::STATUS_SUCCEEDED);
     }

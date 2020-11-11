@@ -3,7 +3,10 @@
 namespace Orkhanahmadov\YandexCheckout;
 
 use Illuminate\Contracts\Config\Repository;
+use Illuminate\Database\Eloquent\Model;
+use Orkhanahmadov\YandexCheckout\Models\YandexCheckout as YandexCheckoutModel;
 use YandexCheckout\Client;
+use YandexCheckout\Model\PaymentInterface;
 use YandexCheckout\Request\Payments\CreatePaymentRequestInterface;
 use YandexCheckout\Request\Payments\CreatePaymentResponse;
 
@@ -23,8 +26,51 @@ class YandexCheckout
         );
     }
 
-    public function payment(CreatePaymentRequestInterface $paymentRequest): CreatePaymentResponse
+    public function createPayment(Model $model, CreatePaymentRequestInterface $paymentRequest): YandexCheckoutModel
     {
-        return $this->client->createPayment($paymentRequest);
+        $paymentResponse = $this->client->createPayment($paymentRequest);
+
+        $yandexCheckoutModel = new YandexCheckoutModel();
+        $yandexCheckoutModel->payable_type = get_class($model);
+        $yandexCheckoutModel->payable_id = $model->getKey();
+        $yandexCheckoutModel->payment_id = $paymentResponse->getId();
+        $yandexCheckoutModel->status = $paymentResponse->getStatus();
+        $yandexCheckoutModel->response = $paymentResponse->jsonSerialize();
+        $yandexCheckoutModel->save();
+
+        $this->dispatchEvent('created', $yandexCheckoutModel);
+
+        return $yandexCheckoutModel;
+    }
+
+    /**
+     * @param YandexCheckoutModel|string $payment
+     * @return PaymentInterface
+     */
+    public function paymentInfo($payment): PaymentInterface
+    {
+        if (! $payment instanceof YandexCheckoutModel) {
+            $payment = YandexCheckoutModel::where('payment_id', $payment)->firstOrFail();
+        }
+
+        $paymentResponse = $this->client->getPaymentInfo($payment->payment_id);
+
+        $payment->status = $paymentResponse->getStatus();
+        $payment->response = $paymentResponse->jsonSerialize();
+        $payment->save();
+
+        $this->dispatchEvent('checked', $payment);
+        $this->dispatchEvent($payment->status, $payment);
+
+        return $paymentResponse;
+    }
+
+    private function dispatchEvent(string $name, YandexCheckoutModel $yandexCheckout): void
+    {
+        $event = config("yandex-checkout.events.{$name}");
+
+        if ($event && config('yandex-checkout.events.enabled')) {
+            $event::dispatch($yandexCheckout);
+        }
     }
 }
