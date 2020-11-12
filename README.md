@@ -1,4 +1,4 @@
-<img src="https://banners.beyondco.de/Yandex%20Checkout.png?theme=light&packageName=orkhanahmadov%2Fyandex-checkout&pattern=bankNote&style=style_1&description=YooKassa+%28Yandex+Checkout%29+integration+package+for+Laravel&md=1&showWatermark=0&fontSize=100px&images=credit-card&widths=200&heights=200" />
+<img src="https://banners.beyondco.de/Yandex%20Checkout.png?theme=light&packageName=orkhanahmadov%2Fyandex-checkout&pattern=bankNote&style=style_1&description=YooMoney+%28Yandex+Checkout%29+integration+package+for+Laravel&md=1&showWatermark=0&fontSize=100px&images=credit-card&widths=200&heights=200" />
 
 [![Latest Stable Version](https://poser.pugx.org/orkhanahmadov/yandex-checkout/v/stable)](https://packagist.org/packages/orkhanahmadov/yandex-checkout)
 [![Latest Unstable Version](https://poser.pugx.org/orkhanahmadov/yandex-checkout/v/unstable)](https://packagist.org/packages/orkhanahmadov/yandex-checkout)
@@ -11,7 +11,7 @@
 [![Quality Score](https://img.shields.io/scrutinizer/g/orkhanahmadov/yandex-checkout.svg)](https://scrutinizer-ci.com/g/orkhanahmadov/yandex-checkout)
 [![StyleCI](https://github.styleci.io/repos/311930802/shield?branch=master)](https://github.styleci.io/repos/311930802?branch=master)
 
-Easy and complete YooKassa (Yandex Checkout) integration for Laravel
+Easy and complete YooMoney (Yandex Checkout) integration for Laravel
 
 # Todo:
 - Test coverage
@@ -46,7 +46,7 @@ php artisan vendor:publish --provider="Orkhanahmadov\YandexCheckout\YandexChecko
 
 ## Usage
 
-First, set Yandex Checkout shop ID and secret key in `.env` file. You can get these from [YooKassa merchant page](https://yookassa.ru/my).
+First, set Yandex Checkout shop ID and secret key in `.env` file. You can get these from [YooMoney merchant page](https://yookassa.ru/my).
 ```
 YANDEX_CHECKOUT_SHOP_ID=
 YANDEX_CHECKOUT_SECRET_KEY=
