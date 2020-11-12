@@ -93,21 +93,19 @@ Creates new payment based on passed credentials and accepts 2 arguments:
 ``` php
 $product = Product::first();
 $yandexCheckout = app(YandexCheckoutService::class);
-$yandexCheckout->createPayment(
-    $product,
-    CreatePaymentRequest::builder()->build([
-        'amount' => [
-            'value' => 49.99,
-            'currency' => 'RUB',
-        ],
-        'confirmation' => [
-            'type' => 'redirect',
-            'return_url' => 'https://example.com',
-        ],
-        'capture' => true,
-        'description' => 'Payment for product: ' . $product->id,
-    ]
-);
+$paymentRequest = CreatePaymentRequest::builder()->build([
+    'amount' => [
+        'value' => 49.99,
+        'currency' => 'RUB',
+    ],
+    'confirmation' => [
+        'type' => 'redirect',
+        'return_url' => 'https://example.com',
+    ],
+    'capture' => true,
+    'description' => 'Payment for product: ' . $product->id,
+]);
+$yandexCheckout->createPayment($product, $paymentRequest);
 ```
 
 Method returns created instance of `Orkhanahmadov\YandexCheckout\Models\YandexCheckout` model.
@@ -199,7 +197,7 @@ Eloquent relationship method. Return all related Yandex Checkouts.
 ``` php
 $product = Product::first();
 $product->yandexCheckouts; // returns collection of related Yandex Checkouts
-$product->yandexCheckouts()->where('status', 'succeeded'); // use it as regular Eloquent relationship
+$product->yandexCheckouts()->where('payment_id', '123-ABC-456'); // use it as regular Eloquent relationship
 $product->yandexCheckouts()->pending(); // use scopes on YandexCheckout model
 ```
 
