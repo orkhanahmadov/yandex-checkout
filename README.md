@@ -13,6 +13,9 @@
 
 Easy and complete YooKassa (Yandex Checkout) integration for Laravel
 
+# Todo:
+- Test coverage
+
 # Table of Contents
 
 1. [Requirements](#requirements)
