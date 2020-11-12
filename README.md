@@ -13,7 +13,7 @@
 
 Easy and complete YooMoney (Yandex Checkout) integration for Laravel
 
-# Todo:
+# Todo
 - Test coverage
 
 # Table of Contents
