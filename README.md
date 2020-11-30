@@ -76,7 +76,7 @@ class MyClass
 {
     public function doSomething()
     {
-        $goldenpay = app(YandexCheckoutService::class);
+        $yandexCheckout = app(YandexCheckoutService::class);
         //
     }
 }
