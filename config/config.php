@@ -63,5 +63,6 @@ return [
         'checked' => \Orkhanahmadov\YandexCheckout\Events\CheckoutChecked::class,
         'succeeded' => \Orkhanahmadov\YandexCheckout\Events\CheckoutSucceeded::class,
         'canceled' => \Orkhanahmadov\YandexCheckout\Events\CheckoutCanceled::class,
+        'refunded' => \Orkhanahmadov\YandexCheckout\Events\CheckoutRefunded::class,
     ]
 ];

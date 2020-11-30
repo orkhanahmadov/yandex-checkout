@@ -2,9 +2,9 @@
     "name": "orkhanahmadov/yandex-checkout",
     "description": "Easy and complete YooKassa (Yandex Checkout) integration for Laravel",
     "keywords": [
-        "orkhanahmadov",
         "yandex",
         "yandex-checkout",
+        "yoomoney",
         "yookassa",
         "laravel-payment"
     ],
@@ -19,7 +19,7 @@
         }
     ],
     "require": {
-        "php": "^7.3",
+        "php": "^7.3|^8.0",
         "illuminate/container": "^6.0|^7.0|^8.0",
         "illuminate/contracts": "^6.0|^7.0|^8.0",
         "illuminate/database": "^6.0|^7.0|^8.0",

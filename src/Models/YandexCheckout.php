@@ -2,10 +2,14 @@
 
 namespace Orkhanahmadov\YandexCheckout\Models;
 
+use Illuminate\Container\Container;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\MorphTo;
 use Illuminate\Support\Arr;
+use Orkhanahmadov\YandexCheckout\YandexCheckoutService;
+use YandexCheckout\Request\Payments\Payment\CreateCaptureRequestInterface;
+use YandexCheckout\Request\Refunds\CreateRefundRequestInterface;
 
 /**
  * @property int $id
@@ -39,6 +43,44 @@ class YandexCheckout extends Model
         parent::__construct($attributes);
     }
 
+    /**
+     * @param  CreateCaptureRequestInterface|array  $captureRequest
+     * @return YandexCheckout
+     */
+    public function capturePayment($captureRequest): YandexCheckout
+    {
+        /** @var YandexCheckoutService $yandexCheckout */
+        $yandexCheckout = Container::getInstance()->make(YandexCheckoutService::class);
+
+        $yandexCheckout->capturePayment($this, $captureRequest, $this->payable->yandexCheckoutIdempotenceKey());
+
+        return $this->refresh();
+    }
+
+    public function cancelPayment(): YandexCheckout
+    {
+        /** @var YandexCheckoutService $yandexCheckout */
+        $yandexCheckout = Container::getInstance()->make(YandexCheckoutService::class);
+
+        $yandexCheckout->cancelPayment($this, $this->payable->yandexCheckoutIdempotenceKey());
+
+        return $this->refresh();
+    }
+
+    /**
+     * @param  CreateRefundRequestInterface|array  $refundRequest
+     * @return YandexCheckout
+     */
+    public function refundPayment($refundRequest): YandexCheckout
+    {
+        /** @var YandexCheckoutService $yandexCheckout */
+        $yandexCheckout = Container::getInstance()->make(YandexCheckoutService::class);
+
+        $yandexCheckout->refundPayment($this, $refundRequest, $this->payable->yandexCheckoutIdempotenceKey());
+
+        return $this->refresh();
+    }
+
     public function payable(): MorphTo
     {
         return $this->morphTo();
@@ -52,6 +94,26 @@ class YandexCheckout extends Model
     public function getPaidAttribute(): bool
     {
         return Arr::get($this->response, 'paid', false);
+    }
+
+    public function getRefundableAttribute(): bool
+    {
+        return Arr::get($this->response, 'refundable', false);
+    }
+
+    public function getDescriptionAttribute(): bool
+    {
+        return Arr::get($this->response, 'description');
+    }
+
+    public function getCapturedAtAttribute(): bool
+    {
+        return Arr::get($this->response, 'captured_at');
+    }
+
+    public function getExpiresAtAttribute(): bool
+    {
+        return Arr::get($this->response, 'expires_at');
     }
 
     public function getConfirmationUrlAttribute(): ?string

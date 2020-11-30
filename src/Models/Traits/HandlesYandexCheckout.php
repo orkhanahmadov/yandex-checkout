@@ -21,11 +21,25 @@ trait HandlesYandexCheckout
         return $this->morphMany(YandexCheckout::class, 'payable');
     }
 
-    public function createPayment(CreatePaymentRequestInterface $paymentRequest): YandexCheckout
+    /**
+     * @param  CreatePaymentRequestInterface|array  $paymentRequest
+     * @param  string|null  $idempotenceKey
+     * @return YandexCheckout
+     */
+    public function createPayment($paymentRequest, ?string $idempotenceKey = null): YandexCheckout
     {
         /** @var YandexCheckoutService $yandexCheckout */
         $yandexCheckout = Container::getInstance()->make(YandexCheckoutService::class);
 
-        return $yandexCheckout->createPayment($this, $paymentRequest);
+        return $yandexCheckout->createPayment(
+            $this,
+            $paymentRequest,
+            $idempotenceKey ?? $this->yandexCheckoutIdempotenceKey()
+        );
+    }
+
+    public function yandexCheckoutIdempotenceKey(): ?string
+    {
+        return "{$this->getTable()}-{$this->getKey()}";
     }
 }
