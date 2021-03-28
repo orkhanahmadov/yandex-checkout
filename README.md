@@ -76,7 +76,7 @@ class MyClass
 {
     public function doSomething()
     {
-        $goldenpay = app(YandexCheckoutService::class);
+        $yandexCheckout = app(YandexCheckoutService::class);
         //
     }
 }
@@ -297,6 +297,7 @@ If you discover any security related issues, please email orkhan@fastmail.com in
 ## Credits
 
 - [Orkhan Ahmadov](https://github.com/orkhanahmadov)
+- [LinksDerIsar](https://www.linksderisar.com)
 - [All Contributors](../../contributors)
 
 ## License
