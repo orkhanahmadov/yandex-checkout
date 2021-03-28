@@ -11,7 +11,7 @@
 [![Quality Score](https://img.shields.io/scrutinizer/g/orkhanahmadov/yandex-checkout.svg)](https://scrutinizer-ci.com/g/orkhanahmadov/yandex-checkout)
 [![StyleCI](https://github.styleci.io/repos/311930802/shield?branch=master)](https://github.styleci.io/repos/311930802?branch=master)
 
-Easy and complete YooMoney (Yandex Checkout) integration for Laravel
+Easy and complete YooKassa (previously Yandex Checkout) integration for Laravel
 
 # Todo
 - Test coverage

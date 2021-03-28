@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\MorphMany;
 use Orkhanahmadov\YandexCheckout\Models\YandexCheckout;
 use Orkhanahmadov\YandexCheckout\YandexCheckoutService;
-use YandexCheckout\Request\Payments\CreatePaymentRequestInterface;
+use YooKassa\Request\Payments\CreatePaymentRequestInterface;
 
 /**
  * Trait Payable.

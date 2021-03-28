@@ -5,12 +5,11 @@ namespace Orkhanahmadov\YandexCheckout;
 use Illuminate\Contracts\Config\Repository;
 use Illuminate\Database\Eloquent\Model;
 use Orkhanahmadov\YandexCheckout\Models\YandexCheckout;
-use YandexCheckout\Client;
-use YandexCheckout\Request\Payments\AbstractPaymentResponse;
-use YandexCheckout\Request\Payments\CreatePaymentRequestInterface;
-use YandexCheckout\Request\Payments\Payment\CreateCaptureRequestInterface;
-use YandexCheckout\Request\Refunds\CreateRefundRequest;
-use YandexCheckout\Request\Refunds\CreateRefundRequestInterface;
+use YooKassa\Client;
+use YooKassa\Request\Payments\AbstractPaymentResponse;
+use YooKassa\Request\Payments\CreatePaymentRequestInterface;
+use YooKassa\Request\Payments\Payment\CreateCaptureRequestInterface;
+use YooKassa\Request\Refunds\CreateRefundRequestInterface;
 
 class YandexCheckoutService
 {

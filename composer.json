@@ -1,6 +1,6 @@
 {
     "name": "orkhanahmadov/yandex-checkout",
-    "description": "Easy and complete YooKassa (Yandex Checkout) integration for Laravel",
+    "description": "Easy and complete YooKassa (previously Yandex Checkout) integration for Laravel",
     "keywords": [
         "yandex",
         "yandex-checkout",
@@ -25,7 +25,7 @@
         "illuminate/database": "^6.0|^7.0|^8.0",
         "illuminate/queue": "^6.0|^7.0|^8.0",
         "illuminate/support": "^6.0|^7.0|^8.0",
-        "yandex-money/yandex-checkout-sdk-php": "^1.6"
+        "yoomoney/yookassa-sdk-php": "^2.0"
     },
     "require-dev": {
         "orchestra/testbench": "^4.0|^5.0|^6.0",

@@ -8,8 +8,8 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\MorphTo;
 use Illuminate\Support\Arr;
 use Orkhanahmadov\YandexCheckout\YandexCheckoutService;
-use YandexCheckout\Request\Payments\Payment\CreateCaptureRequestInterface;
-use YandexCheckout\Request\Refunds\CreateRefundRequestInterface;
+use YooKassa\Request\Payments\Payment\CreateCaptureRequestInterface;
+use YooKassa\Request\Refunds\CreateRefundRequestInterface;
 
 /**
  * @property int $id
